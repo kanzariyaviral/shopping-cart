@@ -102,7 +102,7 @@ export class UserService {
       }
     }
   }
-
+  //
   async deleteUser(record): Promise<any> {
     const { email } = record;
     const data = await this.findByEmail(email);
