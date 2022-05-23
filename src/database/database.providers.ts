@@ -27,6 +27,9 @@ export const databaseProviders = [
         username: dbconfig.username,
         password: dbconfig.password,
         storage: ':memory:',
+        dialectOptions: {
+          ssl: true,
+        },
         models: [User, Address, Product],
         pool: {
           max: 5,

@@ -9,7 +9,7 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { addAddressDto } from '../Dto/create-address-dto';
+import { addAddressDto } from '../dto/create.Address.dto';
 import { AddressService } from '../service/address.service';
 
 @Controller('address')

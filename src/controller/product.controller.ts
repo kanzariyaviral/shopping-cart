@@ -11,7 +11,7 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { addProductDto } from '../Dto/create-Product-dto';
+import { addProductDto } from '../dto/create.Product.dto';
 import { ProductService } from '../service/product.service';
 import { fileInterceptor } from '../utils/file-upload.utils';
 
