@@ -2,7 +2,7 @@
 import * as Joi from 'joi';
 
 export default () => ({
-  port: parseInt(process.env.PORT, 10) || 3000,
+  port: parseInt(process.env.PORT, 10) || 5000,
   // useSSL: process.env.USE_SSL.toLowerCase() === 'true' ? true : false,
   database: {
     host: process.env.DB_HOST,
