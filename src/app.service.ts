@@ -9,6 +9,6 @@ export class AppService {
   ) {}
 
   async getHello() {
-    return await this.userProvider.findAll();
+    return 'hello';
   }
 }
