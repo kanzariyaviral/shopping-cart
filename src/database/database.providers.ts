@@ -28,8 +28,10 @@ export const databaseProviders = [
         password: dbconfig.password,
         storage: ':memory:',
         dialectOptions: {
-          ssl: false,
-          rejectUnauthorized: false,
+          ssl: {
+            require: true,
+            rejectUnauthorized: false,
+          },
         },
         models: [User, Address, Product],
         pool: {
