@@ -29,6 +29,7 @@ export const databaseProviders = [
         storage: ':memory:',
         dialectOptions: {
           ssl: true,
+          rejectUnauthorized: false,
         },
         models: [User, Address, Product],
         pool: {
