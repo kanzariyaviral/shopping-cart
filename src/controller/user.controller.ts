@@ -19,7 +19,7 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  @Post('sigup')
+  @Post('singup')
   @UsePipes(ValidationPipe)
   create(@Body() user: createUserDto): Promise<any> {
     return this.userService.CreateUser(user);
@@ -36,8 +36,8 @@ export class UserController {
     // return this.userService.findByEmail(record.email);
   }
 
-  @Post('sigin')
-  sigin(@Body() record: any): Promise<any> {
+  @Post('singin')
+  singin(@Body() record: any): Promise<any> {
     return this.userService.singin(record);
   }
 
