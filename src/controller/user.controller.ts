@@ -3,12 +3,14 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Post,
   Query,
+  UseGuards,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { UserService } from 'src/service/user.service';
+import { UserService } from '../service/user.service';
 import { createUserDto } from '../Dto/create.User.dto';
 
 @Controller('user')
@@ -48,5 +50,9 @@ export class UserController {
   @Delete('deleteuser')
   duser(@Body() record: any): any {
     return this.userService.deleteUser(record);
+  }
+  @Get('getAddressbyuser/:id')
+  userToAddress(@Param('id') id: number): any {
+    return this.userService.userToAddress(id);
   }
 }

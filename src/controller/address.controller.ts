@@ -36,4 +36,8 @@ export class AddressController {
   async update(@Param('id') id: number, @Body() data: any): Promise<any> {
     return this.addressService.updateAddress(id, data);
   }
+  @Get('AddressToUser/:id')
+  async AddressToUser(@Param('id') id: number): Promise<any> {
+    return this.addressService.AddressToUser(id);
+  }
 }

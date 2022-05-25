@@ -1,4 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { User } from 'src/entity/user.entity';
 import { Address } from '../entity/address.entity';
 @Injectable()
 export class AddressService {
@@ -53,6 +54,17 @@ export class AddressService {
       return 'product Updated Successfullys';
     } else {
       return 'Product Is Not Available';
+    }
+  }
+  async AddressToUser(id): Promise<any> {
+    const address = await this.addressRepository.findOne({
+      where: { id: id },
+      include: [{ model: User, attributes: ['name', ['email', 'gmail']] }],
+    });
+    if (address) {
+      return address;
+    } else {
+      return 'invalid ID';
     }
   }
 }

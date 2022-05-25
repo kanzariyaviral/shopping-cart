@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { User } from '../entity/user.entity';
 import * as bcrypt from 'bcrypt';
 import * as nodeMailer from 'nodemailer';
+import { Address } from '../entity/address.entity';
 
 @Injectable()
 export class UserService {
@@ -27,10 +28,10 @@ export class UserService {
   }
 
   async findByEmail(email: string): Promise<User[]> {
-    const data: any = await this.usersRepository.findOne<User>({
+    const user: any = await this.usersRepository.findOne<User>({
       where: { email: email },
     });
-    return data;
+    return user;
   }
 
   async encrptPass(user: any): Promise<any> {
@@ -128,7 +129,10 @@ export class UserService {
       }
       const passmatch = await this.decyptPass(password, dpass);
       if (passmatch) {
-        return 'login successfull';
+        const message: any = {
+          message: 'login successfully',
+        };
+        return message;
       } else {
         return 'Auth Failed';
       }
@@ -137,6 +141,19 @@ export class UserService {
         Error: 'Auth Failed',
       };
       return message;
+    }
+  }
+
+  async userToAddress(id): Promise<any> {
+    const user = await this.usersRepository.findOne({
+      attributes: ['name', ['email', 'gmail'], 'gender'],
+      include: [{ model: Address }],
+      where: { id: id },
+    });
+    if (user) {
+      return user;
+    } else {
+      return 'user not found';
     }
   }
 }
